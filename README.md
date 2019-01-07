@@ -10,5 +10,6 @@ You can look in the /routes/ directory to look at the API endpoints used for CRU
 - Node.js
 - Express.js (backend web framework)
 - Jade (HTML template engine)
+- Bulma (CSS framework)
 - MongoDB (document database)
 - nodemon (live web server)
