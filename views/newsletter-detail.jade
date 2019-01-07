@@ -1,0 +1,55 @@
+extends layouts/base
+
+block content
+    .column
+        nav.breadcrumb
+            ul
+                li
+                    a(href='/newsletters') Newsletters
+                li.is-active
+                    a(href='/newsletters/yaw') #{newsletter.title}
+        h1.subtitle.is-3
+            span.has-text-grey-light Newsletter |
+            strong  #{newsletter.title}
+        .columns.is-multiline
+            .column.is-2-desktop.is-2-widescreen
+                p.heading Statistics
+                .card
+                    .card-content
+                        p.heading Published
+                        p.content #{newsletter.updated.toLocaleDateString()}
+                        p.heading Views
+                        p.content 12,000
+                        p.heading Comments
+                        p.content #{newsletter.comments.length}
+                        p.heading Author(s)
+                        p.content
+                            each writer in newsletter.writers
+                                strong #{writer.name}
+            .column.is-12-tablet.is-10-desktop
+                p.heading Newsletter
+                .card
+                    .card-content
+                        p #{newsletter.content}
+            .column.is-12-desktop
+                p.heading Comments
+                table.table.is-bordered.is-fullwidth
+                    thead
+                    tr
+                        th.is-narrow Name
+                        th Comment
+                        th.has-text-right.is-narrow Rating
+                        th.has-text-right.is-narrow Date
+                    tbody
+                        each comment in newsletter.comments
+                            tr
+                                td #{comment.name}
+                                td #{comment.comment}
+                                td #{comment.rating}
+                                td #{comment.created.toLocaleDateString()}
+                        tr
+                            td(colspan='4')
+                                .field.is-grouped.is-grouped-right
+                                    .control
+                                        a.button.is-small.is-primary(href='/newsletters/#{newsletter.slug}/new-comment')
+                                            | Add Comment

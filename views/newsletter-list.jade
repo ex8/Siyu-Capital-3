@@ -1,0 +1,14 @@
+extends layouts/base
+
+block content
+    .columns.is-multiline
+        each newsletter in newsletters
+            .column.is-12-tablet.is-6-desktop.is-4-widescreen
+                article.box
+                    .media
+                        .media-content
+                            p.title.is-5.is-spaced.is-marginless
+                                a(href='/newsletters/#{newsletter.slug}') #{newsletter.title}
+                            p.subtitle.is-marginless.is-7 Published: #{newsletter.updated.toLocaleDateString()}
+                                br
+                                | Authors: Matt

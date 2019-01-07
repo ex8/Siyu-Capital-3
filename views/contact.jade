@@ -1,0 +1,20 @@
+extends layouts/base
+
+block content
+    form(method='POST')
+        .field
+            .field
+                label.label Full name
+                .control
+                    input.input.is-large(type='text', name='name', placeholder='Billy Joe', required)
+            .field
+                label.label Email
+                .control
+                    input.input.is-large(type='email', name='email', placeholder='billy@joe.io', required)
+            .field
+                label.label Message
+                .control
+                    textarea.textarea(name='message',
+                    placeholder='Please thoroughly describe your intended message', required)
+            .field
+                button.button.is-primary Submit
